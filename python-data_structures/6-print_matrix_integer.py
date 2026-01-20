@@ -6,7 +6,7 @@ def print_matrix_integer(matrix=[[]]):
         D_matrix = ""
         for i in a:
             D_matrix += str(i) + " "
-        print("{:s}".format(D_matrix))
+        print("{:d}".format(D_matrix))
 
 
 matrix = [
