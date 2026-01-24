@@ -7,7 +7,7 @@ def safe_print_division(a, b):
     try:
         result = a / b
         return result
-    except TypeError:
+    except Exception:
         result = None
         return None
     finally:
