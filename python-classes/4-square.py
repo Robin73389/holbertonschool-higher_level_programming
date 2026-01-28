@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """
 class Square
 """
@@ -11,24 +12,19 @@ class Square:
     def __init__(self, size=0):
         self.__size = size
 
-        if type(size) is not int:
+    @property
+    def size(self):
+        return self.__size
+
+    @size.setter
+    def size(self, value):
+
+        if not isinstance(value, int):
             raise TypeError("size must be an integer")
 
-        if size < 0:
+        if value < 0:
             raise ValueError("size must be >= 0")
+        self.__size = value
 
     def area(self):
-        return self.__size * self.__size
-
-
-my_square = Square(89)
-print("Area: {} for size: {}".format(my_square.area(), my_square.size))
-
-my_square.size = 3
-print("Area: {} for size: {}".format(my_square.area(), my_square.size))
-
-try:
-    my_square.size = "5 feet"
-    print("Area: {} for size: {}".format(my_square.area(), my_square.size))
-except Exception as e:
-    print(e)
+        return self.__size ** 2
