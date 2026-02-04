@@ -1,25 +1,15 @@
 #!/usr/bin/python3
-"""Rectangle
-Init of the attribute width and height
-"""
+""" Init of the attribute width and height """
 
 
 class BaseGeometry:
-    """
-    Class BaseGeometry
-    """
-
+    """ Class BaseGeometry """
     def area(self):
-        """
-        Docstring for area
-        """
+        """ Docstring for area """
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
-        """
-        Docstring for integer_validator
-        """
-
+        """ Docstring for integer_validator """
         if type(value) is not int:
             raise TypeError(f"{name} must be an integer")
         if value <= 0:
@@ -27,18 +17,9 @@ class BaseGeometry:
 
 
 class Rectangle(BaseGeometry):
-    """
-    Class Rectangle
-    """
-
+    """ Class Rectangle """
     def __init__(self, width, height):
-        """
-        Docstring for __init__
-
-        :param self: Description
-        :param width: Description
-        :param height: Description
-        """
+        """ Docstring for init """
         self.integer_validator("width", width)
         self.integer_validator("height", height)
 
