@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Class BaseGeometry"""
+"""
+Class BaseGeometry
+"""
 
 
 class BaseGeometry:
@@ -9,6 +11,9 @@ class BaseGeometry:
     def area(self):
         raise Exception("area() is not implemented")
 
+    """
+    Check if number is positif
+    """
     def integer_validator(self, name, value):
         if type(value) is not int:
             raise TypeError(f"{name} must be an integer")
