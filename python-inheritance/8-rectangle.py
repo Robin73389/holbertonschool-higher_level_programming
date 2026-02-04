@@ -15,7 +15,8 @@ class BaseGeometry:
 
 
 class Rectangle(BaseGeometry):
-    """Return Rectangle which return the methode """
+    """Return Rectangle which return the methode
+    which return the width and height"""
 
     def __init__(self, width, height):
         self.integer_validator("width", width)
