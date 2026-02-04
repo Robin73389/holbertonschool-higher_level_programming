@@ -1,23 +1,23 @@
 #!/usr/bin/python3
-"""
-Class BaseGeometry
+"""Rectangle
+Init of the attribute width and height
 """
 
 
 class BaseGeometry:
     """
-    return Exception message
+    Class BaseGeometry
     """
 
     def area(self):
         """
-        Area methode
+        Docstring for area
         """
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
         """
-        Methode integer
+        Docstring for integer_validator
         """
 
         if type(value) is not int:
@@ -28,14 +28,17 @@ class BaseGeometry:
 
 class Rectangle(BaseGeometry):
     """
-    Return Rectangle which return the methode
+    Class Rectangle
     """
 
     def __init__(self, width, height):
         """
-        Methode init
-        """
+        Docstring for __init__
 
+        :param self: Description
+        :param width: Description
+        :param height: Description
+        """
         self.integer_validator("width", width)
         self.integer_validator("height", height)
 
