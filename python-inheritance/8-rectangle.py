@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-""" Init of the attribute width and height """
+"""
+Module 8-rectangle
+"""
 
 
 class BaseGeometry:
@@ -19,7 +21,12 @@ class BaseGeometry:
 class Rectangle(BaseGeometry):
     """ Class Rectangle """
     def __init__(self, width, height):
-        """ Docstring for init """
+        """ Docstring for init
+
+        Args:
+            width (int): width of the rectangle
+            height (int): height of the rectangle
+        """
         self.integer_validator("width", width)
         self.integer_validator("height", height)
 
