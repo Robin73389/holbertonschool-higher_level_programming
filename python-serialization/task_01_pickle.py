@@ -46,5 +46,8 @@ class CustomObject:
         :param cls: Description
         :param filename: Description
         """
-        with open(filename, 'rb') as f1:
-            return pickle.load(f1)
+        try:
+            with open(filename, 'rb') as f1:
+                return pickle.load(f1)
+        except (FileNotFoundError, pickle.UnpicklingError, EOFError, OSError):
+            return None
