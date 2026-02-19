@@ -31,7 +31,9 @@ def fetch_and_save_posts():
 
     responce = requests.get(URL)
 
-    if responce.status_code == 200:
+    if responce.status_code != 200:
+        return()
+    else:
         data = responce.json()
 
         data = [
