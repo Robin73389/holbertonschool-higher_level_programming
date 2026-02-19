@@ -15,7 +15,9 @@ def fetch_and_print_posts():
     responce = requests.get(URL)
     print(f"Status Code: {responce.status_code}")
 
-    if responce.status_code == 200:
+    if responce.status_code != 200:
+        return()
+    else:
         data = responce.json()
         for post in data:
             print(post["title"])
@@ -44,3 +46,6 @@ def fetch_and_save_posts():
 
         for line in data:
             csv_write.writerow(line)
+
+fetch_and_print_posts()
+fetch_and_save_posts()
