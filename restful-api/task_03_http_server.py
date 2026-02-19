@@ -3,8 +3,8 @@
 Docstring: http.server
 """
 
-from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
+from http.server import BaseHTTPRequestHandler, HTTPServer
 
 
 class Server(BaseHTTPRequestHandler):
@@ -25,16 +25,16 @@ class Server(BaseHTTPRequestHandler):
                 }
 
             self.send_response(200)
-            self.end_headers('Content-type', 'application/json')
+            self.send_headers('Content-type', 'application/json')
             self.end_headers()
-            self.wfile.write("Hello, this is a simple API!".encode('utf-8'))
+            self.wfile.write(json.data.encode('utf-8'))
             json = json.dumps(data)
             return
         if self.path == '/status':
-            self.send_reponse(200)
+            self.send_response(200)
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
-            self.wfile.write()
+            self.wfile.write("OK".encode())
             return
 
         if self.path == '/':
@@ -43,14 +43,14 @@ class Server(BaseHTTPRequestHandler):
             file_to_open = open(self.path[1:]).read()
             self.send_response(200)
             self.send_header('Content-type', 'text/html')
-            self.end_header()
+            self.end_headers()
             self.wfile.write(file_to_open.encode())
 
         except Exception:
             self.send_response(404)
             self.send_header('Content-type', 'text/html')
             self.end_headers()
-            self.wfile.write()
+            self.wfile.write("404 Not Found".encode())
 
 
 server_address = ('', 8000)
