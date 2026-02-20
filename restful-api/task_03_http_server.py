@@ -1,10 +1,8 @@
 #!/usr/bin/python3
-"""
-Docstring: http.server
-"""
 
-import json
+
 from http.server import BaseHTTPRequestHandler, HTTPServer
+import json
 
 
 class Server(BaseHTTPRequestHandler):
@@ -17,40 +15,40 @@ class Server(BaseHTTPRequestHandler):
         Doctring Method do_Get: This merthod
         hand requests GET
         """
+
+        if self.path == '/':
+            self.send_response(200)
+            self.send_header('Content-type', 'text/plain')
+            self.end_headers()
+            self.wfile.write("Hello, this is a simple API!".encode('utf-8'))
+            return
+
         if self.path == '/data':
             data = {
                 "name": "John",
                 "age": 30,
                 "city": "New York"
-                }
+            }
 
             self.send_response(200)
-            self.send_headers('Content-type', 'application/json')
+            self.send_header('Content-type', 'application/json')
             self.end_headers()
-            self.wfile.write(json.data.encode('utf-8'))
-            json = json.dumps(data)
+
+            json_data = json.dumps(data)
+            self.wfile.write(json_data.encode('utf-8'))
             return
+
         if self.path == '/status':
             self.send_response(200)
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
-            self.wfile.write("OK".encode())
+            self.wfile.write("OK".encode('utf-8'))
             return
 
-        if self.path == '/':
-            self.path = '/index.html'
-        try:
-            file_to_open = open(self.path[1:]).read()
-            self.send_response(200)
-            self.send_header('Content-type', 'text/html')
-            self.end_headers()
-            self.wfile.write(file_to_open.encode())
-
-        except Exception:
-            self.send_response(404)
-            self.send_header('Content-type', 'text/html')
-            self.end_headers()
-            self.wfile.write("404 Not Found".encode())
+        self.send_response(404)
+        self.send_header('Content-type', 'text/plain')
+        self.end_headers()
+        self.wfile.write("Endpoint not found".encode('utf-8'))
 
 
 server_address = ('', 8000)
