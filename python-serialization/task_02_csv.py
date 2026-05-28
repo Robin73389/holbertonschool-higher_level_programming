@@ -21,7 +21,7 @@ def convert_csv_to_json(CSV):
 
         return True
 
-    except IOError:
+    except (IOError, AttributeError):
         return False
 
 
